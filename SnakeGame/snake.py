@@ -17,6 +17,13 @@ class Snake:
         for i in STARTING_POSITION:
             self.add_segment(i, 1)
 
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+
 
     def move(self):
         for seg in range(len(self.segments) - 1, 0, -1):
@@ -51,7 +58,7 @@ class Snake:
         # new_snake_segment.goto(x=self.snake[len(self.snake) - 1].xcor() - 20, y=self.snake[len(self.snake) - 1].ycor())
 
     def extend(self):
-        self.add_segment(self.segments[len(self.segments) - 1].position(),self.segments[len(self.segments) - 1].speed())
+        self.add_segment(self.segments[len(self.segments) - 1].position(), self.segments[len(self.segments) - 1].speed())
 
     def increase_speed(self):
         for segment in self.segments:
